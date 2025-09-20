@@ -66,7 +66,7 @@ docker compose up -d
 ```
 
 4. Acesse o n8n em:
-[n8n](http://localhost:5678)
+[http://localhost:5678](http://localhost:5678)
 
 ## ⚙️ Configurar o ambiente
 Variáveis de ambiente (`.env`)
