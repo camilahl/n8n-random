@@ -1,0 +1,30 @@
+﻿{
+  "name": "n8n-nodes-random",
+  "version": "1.0.0",
+  "description": "Random.org True Random Number Generator node for n8n",
+  "license": "MIT",
+  "author": "Camila",
+  "keywords": ["n8n", "random", "random.org"],
+  "engines": { "node": ">=22.0.0" },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && copyfiles -u 1 src/**/*.svg dist/",
+    "dev": "tsc -w",
+    "test": "node -e \"console.log('OK')\""
+  },
+  "dependencies": {
+    "n8n-core": "^1.0.0",
+    "n8n-workflow": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.11.30",
+    "copyfiles": "^2.4.1"
+  },
+  "n8n": {
+    "nodes": [
+      "dist/nodes/Random/Random.node.js"
+    ]
+  }
+}
