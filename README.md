@@ -1,7 +1,7 @@
-# 🎲 n8n Random (Custom Node)
-
-Custom Node para **n8n** que gera números aleatórios verdadeiros usando a **API do RANDOM.ORG**.  
-Este conector personalizado foi desenvolvido como desafio técnico de processo seletivo.  
+# 🎲 n8n Random (Desafio Custom Node)
+ 
+Desenvolvimento de um conector personalizado para a plataforma de automação n8n como desafio técnico parte de um processo seletivo. 
+O conector Random do **n8n** recebe um input de mínimo e máximo que aceita apenas números e retorna um número aleatório usando a **API do RANDOM.ORG**. 
 
 ---
 
@@ -9,9 +9,9 @@ Este conector personalizado foi desenvolvido como desafio técnico de processo s
 
 - Node chamado **Random**
 - Operação: **True Random Number Generator**
-- Inputs obrigatórios:
-  - **Min** → número mínimo (inclusivo)
-  - **Max** → número máximo (inclusivo)
+- Inputs obrigatórios (apenas números):
+  - **Min** → número mínimo
+  - **Max** → número máximo
 - Output: objeto JSON com `{ min, max, value, source }`
 - Integração direta com o endpoint oficial do [RANDOM.ORG](https://www.random.org/integers/)
 
@@ -24,84 +24,95 @@ Exemplo de saída:
   "value": 43,
   "source": "random.org"
 }
+```
 
-🛠️ Pré-requisitos
+## 🛠️ Pré-requisitos
 
-Docker
+[Docker](https://docs.docker.com/get-docker/)
 
-Docker Compose
+[Docker Compose](https://docs.docker.com/compose/install/)
 
-Node.js 22 LTS
- + npm
+[Node.js 22 LTS](https://nodejs.org/en)
+[+ npm](https://www.npmjs.com/)
 
-⚙️ Configuração da Infraestrutura
+## 📦 Instalar dependências
 
-Clone este repositório:
+Após clonar o repositório:
 
-git clone https://github.com/seu-usuario/n8n-random.git
-cd n8n-random/infra
+```
+cd packages/n8n-nodes-random
+npm install
+npm run build
+```
 
+Isso vai compilar o código TypeScript e gerar a pasta `dist/` com o node pronto para ser usado no n8n.
 
-Copie o arquivo de exemplo de variáveis de ambiente e configure:
+## 🐳 Executar o serviço localmente (Docker)
 
+1. Vá até a pasta de infraestrutura:
+```
+cd infra
+```
+
+2. Copie o arquivo de variáveis de ambiente:
+```
 cp .env.example .env
+```
+3. Suba os containers:
+```
+docker compose up -d
+```
 
+4. Acesse o n8n em:
+[n8n](http://localhost:5678)
 
-Edite .env se necessário:
-
+## ⚙️ Configurar o ambiente
+Variáveis de ambiente (`.env`)
+```
 POSTGRES_USER=n8n
 POSTGRES_PASSWORD=n8n
 POSTGRES_DB=n8n
 N8N_ENCRYPTION_KEY=sua-chave-secreta-bem-grande
 N8N_PORT=5678
+```
+- Banco de dados: PostgreSQL é iniciado automaticamente via Docker (imagem oficial `postgres:16`)
+- n8n: roda em `docker.n8n.io/n8nio/n8n:1.85.4` com os dados persistidos em volume local
 
+## ▶️ Usando o Custom Node
 
-Suba os containers:
-
-docker compose up -d
-
-
-Acesse o n8n em: http://localhost:5678
- e crie sua conta.
-
-🔧 Build e Instalação do Custom Node
-
-Instale dependências e faça o build:
-
-cd ../packages/n8n-nodes-random
-npm install
-npm run build
-
-
-Copie os arquivos compilados para o diretório de nodes customizados:
-
+1. Compile e copie o node para a pasta de extensões:
+```
 cd ../..
 mkdir dist_custom
-xcopy packages\n8n-nodes-random\dist dist_custom /E /I /Y
+cp -r packages/n8n-nodes-random/dist/* dist_custom/
+```
 
-
-Reinicie o n8n:
-
+2. Reinicie o n8n:
+```
 cd infra
 docker compose restart n8n
+```
 
-▶️ Testando no n8n
+3. No n8n:
+- Crie um New Workflow
+- Adicione o node Random (vai aparecer na seção Custom)
+- Defina Min e Max
+- Clique em Execute Node
 
-Abra http://localhost:5678
+## 🧪 Executar os testes
 
-Crie um New Workflow
+No momento há apenas um teste placeholder. Para rodar:
+```
+cd packages/n8n-nodes-random
+npm test
+```
 
-Adicione o node Random (vai aparecer na seção Custom)
+Ou faça testes práticos direto no n8n criando workflows.
 
-Preencha Min e Max
-
-Clique em Execute Node
-
-Veja o resultado no painel de saída 🎉
-
-📂 Estrutura do Projeto
+## 📂 Estrutura do projeto
+```
 n8n-random/
-├─ infra/                # Infraestrutura (Docker + Postgres + n8n)
+├─ infra/                # Infra (Docker + Postgres + n8n)
 │  ├─ .env.example
 │  └─ docker-compose.yml
 ├─ packages/
@@ -113,25 +124,19 @@ n8n-random/
 │     │     └─ random.svg
 │     ├─ package.json
 │     └─ tsconfig.json
-├─ dist_custom/          # Saída compilada (carregada pelo n8n)
+├─ dist_custom/          # Node compilado (copiado para o n8n)
 └─ README.md
+```
 
-🧪 Testes
+## 💡 Informações adicionais
 
-Build e execução rápida:
-
-npm run build
-
-
-Testes básicos podem ser feitos rodando workflows no próprio n8n.
-
-📝 Observações
-
-A integração utiliza o endpoint integers do RANDOM.ORG:
-
+O endpoint utilizado é:
+```
 https://www.random.org/integers/?num=1&min=1&max=60&col=1&base=10&format=plain&rnd=new
+```
 
-
-Validação incluída para garantir que Min ≤ Max.
-
-Projeto testado no n8n v1.85.4.
+Há validação para garantir que Min ≤ Max.
+Testado no n8n v1.85.4.
+Se o node não aparecer no n8n:
+- Verifique se a pasta `dist_custom` foi criada e copiada corretamente.
+- Reinicie o container `n8n`.
