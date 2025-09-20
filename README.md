@@ -33,8 +33,7 @@ Exemplo de saída:
 
 [Docker Compose](https://docs.docker.com/compose/install/)
 
-[Node.js 22 LTS](https://nodejs.org/en) 
-+ [npm](https://www.npmjs.com/)
+[Node.js 22 LTS](https://nodejs.org/en) + [npm](https://www.npmjs.com/)
 
 ## 📦 Instalar dependências
 
