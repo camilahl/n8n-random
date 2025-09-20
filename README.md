@@ -37,9 +37,11 @@ Exemplo de saída:
 
 ## 📦 Instalar dependências
 
-Após clonar o repositório:
+Clone o repositório:
 
 ```
+git clone https://github.com/seu-usuario/n8n-random.git
+cd n8n-random
 cd packages/n8n-nodes-random
 npm install
 npm run build
