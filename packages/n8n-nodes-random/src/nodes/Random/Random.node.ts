@@ -59,6 +59,9 @@ export class Random implements INodeType {
 
       if (min > max)
         throw new NodeOperationError(this.getNode(), "Min não pode ser maior que Max.");
+      
+      if (min == max)
+        throw new NodeOperationError(this.getNode(), "Min não pode ser igual ao Max.");
 
       const res = await this.helpers.httpRequest({
         url: "https://www.random.org/integers/",
