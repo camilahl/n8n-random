@@ -1,6 +1,7 @@
 # 🎲 n8n Random (Desafio Custom Node)
  
 Desenvolvimento de um conector personalizado para a plataforma de automação n8n como desafio técnico parte de um processo seletivo. 
+
 O conector Random do **n8n** recebe um input de mínimo e máximo que aceita apenas números e retorna um número aleatório usando a **API do RANDOM.ORG**. 
 
 ---
@@ -32,8 +33,8 @@ Exemplo de saída:
 
 [Docker Compose](https://docs.docker.com/compose/install/)
 
-[Node.js 22 LTS](https://nodejs.org/en)
-[+ npm](https://www.npmjs.com/)
+[Node.js 22 LTS](https://nodejs.org/en) 
++ [npm](https://www.npmjs.com/)
 
 ## 📦 Instalar dependências
 
@@ -76,6 +77,7 @@ N8N_ENCRYPTION_KEY=sua-chave-secreta-bem-grande
 N8N_PORT=5678
 ```
 - Banco de dados: PostgreSQL é iniciado automaticamente via Docker (imagem oficial `postgres:16`)
+  
 - n8n: roda em `docker.n8n.io/n8nio/n8n:1.85.4` com os dados persistidos em volume local
 
 ## ▶️ Usando o Custom Node
@@ -95,8 +97,11 @@ docker compose restart n8n
 
 3. No n8n:
 - Crie um New Workflow
+  
 - Adicione o node Random (vai aparecer na seção Custom)
+  
 - Defina Min e Max
+  
 - Clique em Execute Node
 
 ## 🧪 Executar os testes
