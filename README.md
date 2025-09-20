@@ -1,6 +1,6 @@
 # 🎲 n8n Random (Desafio Custom Node)
  
-Desenvolvimento de um conector personalizado para a plataforma de automação n8n como desafio técnico parte de um processo seletivo. 
+Este repositório contém o desenvolvimento de um Custom Node para o n8n, criado como parte de um desafio técnico de processo seletivo.
 
 O conector Random do **n8n** recebe um input de mínimo e máximo que aceita apenas números e retorna um número aleatório usando a **API do RANDOM.ORG**. 
 
