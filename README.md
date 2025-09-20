@@ -40,7 +40,7 @@ Exemplo de saída:
 Clone o repositório:
 
 ```
-git clone https://github.com/seu-usuario/n8n-random.git
+git clone https://github.com/camilahl/n8n-random.git
 cd n8n-random
 cd packages/n8n-nodes-random
 npm install
@@ -107,13 +107,22 @@ docker compose restart n8n
 
 ## 🧪 Executar os testes
 
-No momento há apenas um teste placeholder. Para rodar:
-```
-cd packages/n8n-nodes-random
-npm test
-```
+Este repositório **não inclui testes automatizados**. 
+Para validar o conector, use testes **manuais** no n8n:
 
-Ou faça testes práticos direto no n8n criando workflows.
+1) Abra [http://localhost:5678](http://localhost:5678)
+   
+3) Crie um workflow com o node **Random**
+   
+5) Execute com diferentes pares (Min, Max), incluindo casos-limite:
+   - Min = 1, Max = 1 (limite que min não pode ser igual ao max)
+     
+   - Min > Max (limite que min não pode ser maior que max)
+     
+   - Valores grandes (ex.: 1..10_000)
+     
+   - Inputs não inteiros (a UI normaliza para inteiro)
+
 
 ## 📂 Estrutura do projeto
 ```
@@ -138,11 +147,15 @@ n8n-random/
 
 O endpoint utilizado é:
 ```
-https://www.random.org/integers/?num=1&min=1&max=60&col=1&base=10&format=plain&rnd=new
+https://www.random.org/integers/
 ```
 
 Há validação para garantir que Min ≤ Max.
+
 Testado no n8n v1.85.4.
+
 Se o node não aparecer no n8n:
+
 - Verifique se a pasta `dist_custom` foi criada e copiada corretamente.
+  
 - Reinicie o container `n8n`.
