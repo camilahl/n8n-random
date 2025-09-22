@@ -37,7 +37,7 @@ Exemplo de saída:
 
 ## 📦 Instalar dependências
 
-Clone o repositório:
+Abra o Windows PowerShell, clone o repositório (confira se está usando o PowerShell e não o cmd):
 
 ```
 git clone https://github.com/camilahl/n8n-random.git
@@ -53,6 +53,7 @@ Isso vai compilar o código TypeScript e gerar a pasta `dist/` com o node pronto
 
 1. Vá até a pasta de infraestrutura:
 ```
+cd ..\..
 cd infra
 ```
 
@@ -60,9 +61,21 @@ cd infra
 ```
 cp .env.example .env
 ```
+
 3. Suba os containers:
+3.1. Abra o Docker Desktop e deixe em Running antes de rodar o seguinte comando:
 ```
 docker compose up -d
+```
+
+3.2. Caso queira confirmar que a porta 5678 foi publicada:
+```
+docker ps
+```
+Você deve ver algo como:
+```
+... docker.n8n.io/n8nio/n8n:1.85.4   0.0.0.0:5678->5678/tcp
+... postgres:16
 ```
 
 4. Acesse o n8n em:
