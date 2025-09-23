@@ -41,7 +41,7 @@ Abra o Windows PowerShell, clone o repositório (confira se está usando o Power
 
 ```
 git clone https://github.com/camilahl/n8n-random-challenge.git
-cd n8n-random
+cd n8n-random-challenge
 cd packages/n8n-nodes-random
 npm install
 npm run build
