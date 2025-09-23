@@ -59,23 +59,19 @@ cd infra
 
 2. Copie o arquivo de variáveis de ambiente:
 ```
+# Linux/macOS/Git Bash
 cp .env.example .env
+
+# Windows PowerShell
+Copy-Item .env.example .env
+
+
 ```
 
 3. Suba os containers:
-3.1. Abra o Docker Desktop e deixe em Running antes de rodar o seguinte comando:
+⚠️ Abra o Docker Desktop e deixe em Running antes de rodar o seguinte comando:
 ```
 docker compose up -d
-```
-
-3.2. Caso queira confirmar que a porta 5678 foi publicada:
-```
-docker ps
-```
-Você deve ver algo como:
-```
-... docker.n8n.io/n8nio/n8n:1.85.4   0.0.0.0:5678->5678/tcp
-... postgres:16
 ```
 
 4. Acesse o n8n em:
@@ -94,13 +90,24 @@ N8N_PORT=5678
   
 - n8n: roda em `docker.n8n.io/n8nio/n8n:1.85.4` com os dados persistidos em volume local
 
+⚠️ Nota sobre N8N_ENCRYPTION_KEY
+Se o usuário já rodou o n8n antes, o valor de N8N_ENCRYPTION_KEY deve ser o mesmo que está no arquivo n8n_data/.n8n/config.
+Se for primeira vez, pode ser qualquer string longa (32+ caracteres).
+
 ## ▶️ Usando o Custom Node
 
 1. Compile e copie o node para a pasta de extensões:
 ```
 cd ../..
+
+# Linux/macOS/Git Bash
 mkdir dist_custom
 cp -r packages/n8n-nodes-random/dist/* dist_custom/
+
+# Windows PowerShell
+mkdir dist_custom -ErrorAction SilentlyContinue
+xcopy .\packages\n8n-nodes-random\dist .\dist_custom /E /I /Y
+
 ```
 
 2. Reinicie o n8n:
@@ -165,7 +172,7 @@ https://www.random.org/integers/
 
 Há validação para garantir que Min ≤ Max.
 
-Testado no n8n v1.85.4.
+Buildado/testado com Node.js v22.9.0 + npm 10.8.3.
 
 Se o node não aparecer no n8n:
 
