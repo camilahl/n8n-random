@@ -40,7 +40,7 @@ Exemplo de saída:
 Abra o Windows PowerShell, clone o repositório (confira se está usando o PowerShell e não o cmd):
 
 ```
-git clone https://github.com/camilahl/n8n-random.git
+git clone https://github.com/camilahl/n8n-random-challenge.git
 cd n8n-random
 cd packages/n8n-nodes-random
 npm install
