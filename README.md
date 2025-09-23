@@ -91,6 +91,11 @@ N8N_PORT=5678
   
 - n8n: roda em `docker.n8n.io/n8nio/n8n:1.85.4` com os dados persistidos em volume local
 
+⚠️ Dica:
+- Se for a primeira vez rodando o n8n, pode usar qualquer string longa (32+ caracteres).
+- Se já rodou antes e existe a pasta infra/n8n_data, use o mesmo valor que aparece no arquivo infra/n8n_data/.n8n/config em "encryptionKey".
+
+
 ## ▶️ Usando o Custom Node
 
 1. Após rodar `npm run build`, copie o resultado para a pasta de extensões:
