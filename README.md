@@ -27,10 +27,12 @@ Exemplo de saída:
 }
 ```
 
-## 🛠️ Pré-requisitos
+## 🛠️ Pré-requisitos Técnicos
++ Node.js + TypeScript na versão 22 (LTS)
 
-[Docker](https://docs.docker.com/get-docker/)
++ Docker compose para subir o n8n + instância Postgres para o n8n
 
+[Docker](https://docs.docker.com/get-started/get-docker/) e
 [Docker Compose](https://docs.docker.com/compose/install/)
 
 [Node.js 22 LTS](https://nodejs.org/en) + [npm](https://www.npmjs.com/)
@@ -64,12 +66,11 @@ cp .env.example .env
 
 # Windows PowerShell
 Copy-Item .env.example .env
-
-
 ```
 
 3. Suba os containers:
-⚠️ Abra o Docker Desktop e deixe em Running antes de rodar o seguinte comando:
+
+⚠️ Confira se o Docker Desktop eatá aberto e em Running antes de rodar o seguinte comando:
 ```
 docker compose up -d
 ```
@@ -90,13 +91,9 @@ N8N_PORT=5678
   
 - n8n: roda em `docker.n8n.io/n8nio/n8n:1.85.4` com os dados persistidos em volume local
 
-⚠️ Nota sobre N8N_ENCRYPTION_KEY
-Se o usuário já rodou o n8n antes, o valor de N8N_ENCRYPTION_KEY deve ser o mesmo que está no arquivo n8n_data/.n8n/config.
-Se for primeira vez, pode ser qualquer string longa (32+ caracteres).
-
 ## ▶️ Usando o Custom Node
 
-1. Compile e copie o node para a pasta de extensões:
+1. Após rodar `npm run build`, copie o resultado para a pasta de extensões:
 ```
 cd ../..
 
