@@ -87,7 +87,7 @@ POSTGRES_DB=n8n
 N8N_ENCRYPTION_KEY=sua-chave-secreta-bem-grande
 N8N_PORT=5678
 ```
-- Banco de dados: PostgreSQL é iniciado automaticamente via Docker (imagem oficial `postgres:16`)
+- Banco de dados: PostgreSQL é iniciado automaticamente via Docker
   
 - n8n: roda em `docker.n8n.io/n8nio/n8n:1.85.4` com os dados persistidos em volume local
 
