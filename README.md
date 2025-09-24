@@ -149,19 +149,10 @@ Para validar o conector, use testes **manuais** no n8n:
 ## 📂 Estrutura do projeto
 ```
 n8n-random-challenge/
-├─ infra/                # Infra (Docker + Postgres + n8n)
-│  ├─ .env.example
-│  └─ docker-compose.yml
+├─ infra/                # Docker Compose + Postgres + n8n
 ├─ packages/
-│  └─ n8n-nodes-random/  # Código do custom node
-│     ├─ src/
-│     │  ├─ index.ts
-│     │  └─ nodes/Random/
-│     │     ├─ Random.node.ts
-│     │     └─ random.svg
-│     ├─ package.json
-│     └─ tsconfig.json
-├─ dist_custom/          # Node compilado (copiado para o n8n)
+│  └─ n8n-nodes-random/  # Código do custom node (TypeScript)
+├─ dist_custom/          # Node compilado e pronto para uso no n8n
 └─ README.md
 ```
 
