@@ -39,7 +39,7 @@ Exemplo de saída:
 
 ## 📦 Instalar dependências
 
-Abra o Windows PowerShell, clone o repositório (confira se está usando o PowerShell e não o cmd):
+Abra o Windows PowerShell e clone o repositório (confira se está usando o PowerShell e não o Prompt de Comando):
 
 ```
 git clone https://github.com/camilahl/n8n-random-challenge.git
@@ -148,7 +148,7 @@ Para validar o conector, use testes **manuais** no n8n:
 
 ## 📂 Estrutura do projeto
 ```
-n8n-random/
+n8n-random-challenge/
 ├─ infra/                # Infra (Docker + Postgres + n8n)
 │  ├─ .env.example
 │  └─ docker-compose.yml
